@@ -2,6 +2,9 @@ import "./App.css";
 import { Jetton } from "./components/Jetton";
 import styled from "styled-components";
 import { Button, FlexBoxCol, FlexBoxRow } from "./components/styled/styled";
+import { CHAIN, TonConnectButton } from "@tonconnect/ui-react";
+import { useTonConnect } from "./hooks/useTonConnect";
+import "@twa-dev/sdk"
 
 const StyledApp = styled.div`
   background-color: #e8e8e8;
@@ -21,15 +24,20 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const network = "mainnet"
+  const {network} = useTonConnect()
 
   return (
     <StyledApp>
       <AppContainer>
         <FlexBoxCol>
           <FlexBoxRow>
+            <TonConnectButton/>
             <Button>
-              {network}
+              {network
+                ? network === CHAIN.MAINNET
+                  ? "mainnet"
+                  : "testnet"
+                : "N/A"}
             </Button>
           </FlexBoxRow>
           <Jetton />

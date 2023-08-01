@@ -1089,7 +1089,6 @@ export class SampleJetton implements Contract {
     }
     
     async send(provider: ContractProvider, via: Sender, args: { value: bigint, bounce?: boolean| null | undefined }, message: Mint | 'Mint!' | Deploy | TokenUpdateContent | TokenBurnNotification) {
-        
         let body: Cell | null = null;
         if (message && typeof message === 'object' && !(message instanceof Slice) && message.$$type === 'Mint') {
             body = beginCell().store(storeMint(message)).endCell();
