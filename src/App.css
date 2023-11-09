@@ -3,3 +3,10 @@
   --tg-theme-button-color: #2eaddc;
   --tg-theme-button-text-color: white;
 }
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
